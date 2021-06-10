@@ -1,0 +1,49 @@
+{% extends '../base.html' %}
+{% block head_content %}
+    <title>
+    Login
+    </title>
+{% endblock head_content %}
+{% load static %}
+
+{% block container %}
+
+<div class="container p-5 mt-3 LoginForm__container">
+    <div class="LoginForm__img">
+        <img src="{% static 'img/logo.png' %}" alt="HV_logo">
+    </div>
+    <h3>Login</h3>
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% include "partials/_messages.html" %}
+
+        <div class="form-group">
+            <label class="mb-1">User Name</label>
+            <input
+                type="text"
+                class="form-control"
+                name="username"
+                placeholder="User Name"
+                >
+            </input>
+            <label class="mb-1">Password</label>
+            <input
+                type="password"
+                class="form-control"
+                name="password"
+                placeholder="Password"
+                >
+            </input>
+        </div>
+        <button class="btn btn-success mx-auto mt-5 d-block px-4" type="submit">
+            Login
+        </button>
+        <div class="d-flex flex-column mt-4 form-footer">
+            <p class="m-auto"> You don't have an account <a href="{% url 'signup' %}">Sign in</a></p>
+        </div>
+    </form>
+</div>
+
+
+{% endblock container %}

@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Teacher(models.Model):
-    teacher = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now=True)
     modified_at = models.DateTimeField(auto_now_add=True)
@@ -27,7 +27,7 @@ class Subject(models.Model):
         return self.short_name
 
 class Student(models.Model):
-    student = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     student_number = models.CharField(max_length=100, blank=True)
     subject = models.ManyToManyField(Subject)
     group = models.CharField(max_length=100, blank=True)

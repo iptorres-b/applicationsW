@@ -10,19 +10,19 @@ from users.models import Teacher, Student, Subject
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    list_display=['id','teacher','title']
-    list_display_links=['id','teacher']
+    list_display=['id','user','title']
+    list_display_links=['id','user']
     list_editable=['title']
-    search_fields=['teacher__email','teacher__is_staff','created_at','modified_at']
-    list_filter=['teacher__is_active','teacher__is_staff','created_at','modified_at']
+    search_fields=['user__email','user__is_staff','created_at','modified_at']
+    list_filter=['user__is_active','user__is_staff','created_at','modified_at']
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display=['id','student','student_number','group']
-    list_display_links=['id','student']
+    list_display=['id','user','student_number','group']
+    list_display_links=['id','user']
     list_editable=['group']
-    search_fields=['student__email','student__created']
-    list_filter=['student__is_active']
+    search_fields=['user__email','user__created']
+    list_filter=['user__is_active']
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
